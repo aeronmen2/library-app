@@ -1,7 +1,7 @@
 from django.db import models
-from .author import Author
-from .publisher import Publisher
-from .category import Category
+from .author_model import Author
+from .publisher_model import Publisher
+from .category_model import Category
 
 class Book(models.Model):
     title = models.CharField(max_length=200)

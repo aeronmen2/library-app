@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .book_copy import BookCopy
+from .book_copy_model import BookCopy
 
 class Loan(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='loans')

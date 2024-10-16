@@ -1,5 +1,5 @@
 from django.db import models
-from .book import Book
+from .book_model import Book
 
 class BookCopy(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='copies')
