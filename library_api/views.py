@@ -3,6 +3,8 @@ from .models import Author, Publisher, Category, Book, BookCopy, Loan, Comment, 
 from .serializers import AuthorSerializer, PublisherSerializer, CategorySerializer, BookSerializer, BookCopySerializer, LoanSerializer, CommentSerializer, RatingSerializer, UserSerializer
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
+from .permissions import IsReadOnly, IsAdminUser
+
 
 class AuthorViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
@@ -60,7 +62,7 @@ class RatingViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsReadOnly|IsAdminUser]
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = [filters.SearchFilter]
